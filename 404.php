@@ -2,10 +2,11 @@
 get_header();
 ?>
 
-<section id="main-content">
-  <h1>Not found</h1>
-  <p>:(</p>
-</section>
+<div id="main-content-container">
+  <main id="main-content">
+    404 Not found
+  </main>
+</div>
 
 <?php
 get_footer();
