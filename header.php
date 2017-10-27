@@ -29,5 +29,9 @@ get_template_part('partials/seo');
 <section id="main-container">
 
   <header id="header">
-    <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+    <h1 class="u-hidden">Venice Post LA</h1>
+    <span id="header-title-venice" class="header-title font-size-extra"><a href="<?php echo home_url(); ?>">VENiCE</a></span>
+    <span id="header-title-post" class="header-title font-size-extra"><a href="<?php echo home_url(); ?>">POST</a></span>
+    <span id="header-title-about" class="header-title"><a href="<?php echo home_url('about/'); ?>" class="header-title-rotate-counter">ABOUT</a>
+    <span id="header-title-contact" class="header-title"><a href="<?php echo home_url('contact/'); ?>" class="header-title-rotate-clockwise">CONTACT</a>
   </header>
