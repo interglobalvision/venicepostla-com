@@ -76,5 +76,36 @@ function igv_cmb_metaboxes() {
 
   }
 
+  // ABOUT
+  $contact_page = get_page_by_path('contact');
+
+  if (!empty($contact_page) ) {
+    $contact_metabox = new_cmb2_box( array(
+      'id'           => $prefix . 'contact_metabox',
+      'title'        => esc_html__( 'Options', 'cmb2' ),
+      'object_types' => array( 'page' ),
+      'show_on'      => array( 'key' => 'id', 'value' => array($contact_page->ID) ),
+    ) );
+
+    $contact_metabox->add_field( array(
+  		'name' => esc_html__( 'Address', 'cmb2' ),
+  		'id'   => $prefix . 'contact_address',
+  		'type' => 'textarea_small',
+  	) );
+
+    $contact_metabox->add_field( array(
+  		'name' => esc_html__( 'Telephone', 'cmb2' ),
+  		'id'   => $prefix . 'contact_phone',
+  		'type' => 'text_medium',
+  	) );
+
+    $contact_metabox->add_field( array(
+  		'name' => esc_html__( 'Email', 'cmb2' ),
+  		'id'   => $prefix . 'contact_email',
+  		'type' => 'text_email',
+  	) );
+
+  }
+
 }
 ?>
