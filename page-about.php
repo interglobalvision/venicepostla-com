@@ -2,22 +2,34 @@
 get_header();
 ?>
 
-<div id="main-content-container">
-  <main id="main-content" class="text-columns text-columns-s-1 text-columns-l-4">
+<main id="main-content"  class="grid-row align-items-center">
 <?php
 if (have_posts()) {
   while (have_posts()) {
     the_post();
+
+    $lists = get_post_meta($post->ID, '_igv_about_lists', true);
 ?>
-    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-      <?php the_content(); ?>
-    </article>
+  <article <?php post_class('text-columns text-columns-s-1 text-columns-m-4'); ?> id="post-<?php the_ID(); ?>">
+    <div class="font-uppercase"><?php the_content(); ?></div>
+<?php
+  if (!empty($lists)) {
+    foreach ($lists as $list) {
+?>
+    <div class="about-list">
+      <h2 class="font-uppercase"><?php echo $list['title']; ?></h2>
+      <?php echo apply_filters('the_content', $list['list']); ?>
+    </div>
+<?php
+    }
+  }
+?>
+  </article>
 <?php
   }
 }
 ?>
-  </main>
-</div>
+</main>
 
 <?php
 get_footer();
