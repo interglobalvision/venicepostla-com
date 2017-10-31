@@ -39,5 +39,42 @@ function igv_cmb_metaboxes() {
    * Reference: https://github.com/WebDevStudios/CMB2/blob/master/example-functions.php
    */
 
+  // ABOUT
+  $about_page = get_page_by_path('about');
+
+  if (!empty($about_page) ) {
+    $about_metabox = new_cmb2_box( array(
+      'id'           => $prefix . 'about_metabox',
+      'title'        => esc_html__( 'Options', 'cmb2' ),
+      'object_types' => array( 'page' ),
+      'show_on'      => array( 'key' => 'id', 'value' => array($about_page->ID) ),
+    ) );
+
+    $about_list_group = $about_metabox->add_field( array(
+  		'id'          => $prefix . 'about_lists',
+  		'type'        => 'group',
+  		'description' => esc_html__( 'About Lists', 'cmb2' ),
+  		'options'     => array(
+  			'group_title'   => esc_html__( 'List {#}', 'cmb2' ), // {#} gets replaced by row number
+  			'add_button'    => esc_html__( 'Add Another List', 'cmb2' ),
+  			'remove_button' => esc_html__( 'Remove List', 'cmb2' ),
+  			'sortable'      => true, // beta
+  		),
+  	) );
+
+    $about_metabox->add_group_field( $about_list_group, array(
+  		'name'       => esc_html__( 'Title', 'cmb2' ),
+  		'id'         => 'title',
+  		'type'       => 'text',
+  	) );
+
+    $about_metabox->add_group_field( $about_list_group, array(
+  		'name'       => esc_html__( 'List', 'cmb2' ),
+  		'id'         => 'list',
+  		'type'       => 'wysiwyg',
+  	) );
+
+  }
+
 }
 ?>
