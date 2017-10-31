@@ -3,7 +3,7 @@
 .header-item
   position: fixed
   z-index: 100
-  text-align: center
+  text-align: center 
 
 #header-item-venice, #header-item-post
   left: 10%
@@ -39,12 +39,16 @@
 
 // MAIN
 
-#main-content-container
-  height: 100vh
-
-  padding: $margin-large
-  overflow: hidden
-
 #main-content
-  column-count: 4
-  column-gap: $margin-small
+  min-height: 100vh
+  padding: $margin-large
+
+// ******************************************************
+
+// ABOUT
+
+.about-list
+  display: block
+  margin-bottom: 1em
+
+// ******************************************************
