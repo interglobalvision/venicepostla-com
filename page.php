@@ -2,22 +2,20 @@
 get_header();
 ?>
 
-<div id="main-content-container">
-  <main id="main-content">
+<main id="main-content">
 <?php
 if (have_posts()) {
   while (have_posts()) {
     the_post();
 ?>
-    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-      <?php the_content(); ?>
-    </article>
+  <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+    <?php the_content(); ?>
+  </article>
 <?php
   }
 }
 ?>
-  </main>
-</div>
+</main>
 
 <?php
 get_footer();
