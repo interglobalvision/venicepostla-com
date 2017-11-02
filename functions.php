@@ -15,10 +15,21 @@ function scripts_and_styles_method() {
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
 
+  $animation_options = get_site_option('_igv_animation_options');
+
+  if (!empty($animation_options['animation_images'])) {
+    $animationImages = $animation_options['animation_images'];
+  } else {
+    $animationImages = null;
+  }
+
+  // $animationImages = ???;
+
   $javascriptVars = array(
     'siteUrl' => home_url(),
     'themeUrl' => get_template_directory_uri(),
     'isAdmin' => $is_admin,
+    'animationImages' => $animationImages
   );
 
   wp_enqueue_script('javascript-library', $javascriptLibrary, '', '', true);

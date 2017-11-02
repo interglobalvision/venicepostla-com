@@ -4,7 +4,7 @@ add_action( 'cmb2_admin_init', 'igv_register_theme_options_metabox' );
 function igv_register_theme_options_metabox() {
   $prefix = '_igv_';
 
-  $boiler_options = new_cmb2_box( array(
+  $animation_options = new_cmb2_box( array(
     'id'           => $prefix . 'animation_options_page',
     'title'        => esc_html__( 'Animation Options', 'cmb2' ),
     'object_types' => array( 'options-page' ),
@@ -23,13 +23,13 @@ function igv_register_theme_options_metabox() {
     'save_button'     => esc_html__( 'Save', 'cmb2' ), // The text for the options-page save button. Defaults to 'Save'.
   ) );
 
-  $boiler_options->add_field( array(
+  $animation_options->add_field( array(
     'name'    => esc_html__( 'Animation Options', 'cmb2' ),
     'id'      => 'title',
     'type'    => 'title',
   ) );
 
-  $boiler_options->add_field( array(
+  $animation_options->add_field( array(
     'name'    => esc_html__( 'Animation images', 'cmb2' ),
     'desc'    => esc_html__( 'field description (optional)', 'cmb2' ),
     'id'      => 'animation_images',
