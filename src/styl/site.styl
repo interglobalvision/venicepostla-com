@@ -46,7 +46,8 @@ $font-leading-tighter = 1.15
 $font-leading-larger = 1.45
 
 $font-tracking-basic = .001em
-$font-tracking-wider = .05em
+$font-tracking-wider = .2em
+$font-tracking-widest = .8em
 
 html
   font-family: $font-sans
@@ -63,6 +64,12 @@ body
 
 .font-larger
   font-size: $font-size-larger
+
+.font-spaced
+  letter-spacing: $font-tracking-wider
+
+.font-spaced-more
+  letter-spacing: $font-tracking-widest
 
 .line-tighter
   line-height: $font-leading-tighter
@@ -108,8 +115,8 @@ $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
-$font-size-basic = 12px
-$font-size-extra = 48px
+$font-size-basic = 19px
+$font-size-extra = 42px
 $font-size-large = 36px
 $font-size-mid = 24px
 $font-size-small = 18px
@@ -134,13 +141,18 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 14px
-
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
   grid-maker(680px, $gutter, m)
 
-  font-sizes($font-size-basic)
+  $font-size-basic = 21px
+  $font-size-extra = 56px
+  $font-size-large = 36px
+  $font-size-mid = 24px
+  $font-size-small = 18px
+  $font-size-tiny = 8px
+
+  font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
 
   .mobile-only
     display: none !important
@@ -158,13 +170,18 @@ font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid,
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 16px
-
   grid-maker(1000px, $gutter, l)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  font-sizes($font-size-basic)
+  $font-size-basic = 23px
+  $font-size-extra = 66px
+  $font-size-large = 36px
+  $font-size-mid = 24px
+  $font-size-small = 18px
+  $font-size-tiny = 8px
+
+  font-sizes($font-size-basic, $font-size-extra, $font-size-large, $font-size-mid, $font-size-small, $font-size-tiny)
 
   .desktop-only
     display: initial !important
