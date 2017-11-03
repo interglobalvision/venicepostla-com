@@ -34,8 +34,6 @@ function scripts_and_styles_method() {
     $animationImages = null;
   }
 
-  // $animationImages = ???;
-
   $javascriptVars = array(
     'siteUrl' => home_url(),
     'themeUrl' => get_template_directory_uri(),
