@@ -6,6 +6,7 @@
 function create_custom_pages() {
 
   $custom_pages = array(
+    'home' => 'Home',
     'about' => 'About',
     'contact' => 'Contact',
   );
