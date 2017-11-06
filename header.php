@@ -34,7 +34,7 @@ get_template_part('partials/seo');
     <span id="header-item-post" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">POST</a></span>
     <span id="header-item-left" class="header-item">
       <?php
-        if (is_page()) {
+        if (!is_front_page()) {
       ?>
       <a href="<?php echo home_url(); ?>" class="header-item-rotate-counter">HOME</a>
       <?php
