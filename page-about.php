@@ -10,7 +10,7 @@ if (have_posts()) {
 
     $lists = get_post_meta($post->ID, '_igv_about_lists', true);
 ?>
-  <article <?php post_class('grid-item item-s-12 text-columns text-columns-s-1 text-columns-m-4'); ?> id="post-<?php the_ID(); ?>">
+  <article <?php post_class('grid-item item-s-12 text-columns text-columns-s-1 text-columns-m-2 text-columns-l-4'); ?> id="post-<?php the_ID(); ?>">
     <div class="font-uppercase"><?php the_content(); ?></div>
 <?php
   if (!empty($lists)) {
