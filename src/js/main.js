@@ -124,9 +124,7 @@ Site.HomeAnimation = {
       }
     }, _this.animationSpeed);
 
-  },
-
-  updateAnimation: function() {}
+  }
 };
 
 Site.init();
