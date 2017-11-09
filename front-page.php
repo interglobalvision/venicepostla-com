@@ -2,7 +2,7 @@
 get_header();
 ?>
 
-<main id="main-content" class="grid-row align-items-center justify-center">
+<main id="main-content">
 <?php
 if (have_posts()) {
   while (have_posts()) {
