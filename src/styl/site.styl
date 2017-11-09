@@ -141,7 +141,7 @@ font-sizes($font-size-basic, $font-size-extra)
 
   grid-maker(680px, $gutter, m)
 
-  $font-size-basic = 21px
+  $font-size-basic = 19px
   $font-size-extra = 56px
 
   font-sizes($font-size-basic, $font-size-extra)
@@ -166,8 +166,8 @@ font-sizes($font-size-basic, $font-size-extra)
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
-  $font-size-basic = 23px
-  $font-size-extra = 66px
+  $font-size-basic = 20px
+  $font-size-extra = 62px
 
   font-sizes($font-size-basic, $font-size-extra)
 
@@ -176,11 +176,16 @@ font-sizes($font-size-basic, $font-size-extra)
 
   @import 'responsive/tablet-landscape'
 
-// @media screen and (min-width: 1280px)
-//
-//   grid-maker(1200px)
-//
-//   @import 'responsive/laptop'
+@media screen and (min-width: 1280px)
+
+  grid-maker(1200px)
+
+  $font-size-basic = 23px
+  $font-size-extra = 66px
+
+  font-sizes($font-size-basic, $font-size-extra)
+
+  @import 'responsive/laptop'
 
 // @media screen and (min-width: 1366px)
 //
