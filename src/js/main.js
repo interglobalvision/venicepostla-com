@@ -79,8 +79,6 @@ Site.HomeAnimation = {
     // if there is an image at the nextImage index
     if (_this.images[_this.nextImage]) {
       _this.addImage(_this.nextImage);
-    } else {
-      console.log('all loaded');
     }
   },
 
