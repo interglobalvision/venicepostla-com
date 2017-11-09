@@ -69,28 +69,7 @@ Site.HomeAnimation = {
 
     // get the first x images in the array
     for (var i = 0; i < _this.numberOfFirstLoadImages; i++) {
-      // append img tag for image
-      _this.$animation.append('<img src="' + _this.images[i] + '" id="animation-image-' + i + '" class="animation-image" />');
-
-      // bind to load event of inserted image
-      $('#animation-image-' + i).bind('load', function() {
-        // on loaded set loaded class
-        $(this).addClass('animation-image-loaded');
-
-        // if animation isn't active trigger animation
-        if (!_this.active) {
-          $('.animation-image-loaded').first().addClass('active');
-
-          _this.animate();
-        }
-
-        // set timeout to load next image after x delay
-        window.setTimeout(function() {
-          _this.loadNextImage();
-        }, _this.requestDelay);
-      });
-
-      _this.nextImage = i + 1;
+      _this.addImage(i);
     }
   },
 
@@ -99,25 +78,38 @@ Site.HomeAnimation = {
 
     // if there is an image at the nextImage index
     if (_this.images[_this.nextImage]) {
-      // append img tag for image
-      _this.$animation.append('<img src="' + _this.images[_this.nextImage] + '" id="animation-image-' + _this.nextImage + '" class="animation-image" />');
-
-      // bind to load event of inserted image
-      $('#animation-image-' + _this.nextImage).bind('load', function() {
-        // on loaded set loaded class
-        $(this).addClass('animation-image-loaded');
-
-        // set timeout to load next image after x delay
-        window.setTimeout(function() {
-          _this.loadNextImage();
-        }, _this.requestDelay);
-      });
-
-      // set next image index to next image
-      _this.nextImage++;
+      _this.addImage(_this.nextImage);
     } else {
       console.log('all loaded');
     }
+  },
+
+  addImage: function(imageIndex) {
+    var _this = this;
+
+    // append img tag for image
+    _this.$animation.append('<img src="' + _this.images[imageIndex] + '" id="animation-image-' + imageIndex + '" class="animation-image" />');
+
+    // bind to load event of inserted image
+    $('#animation-image-' + imageIndex).bind('load', function() {
+      // on loaded set loaded class
+      $(this).addClass('animation-image-loaded');
+
+      // if animation isn't active trigger animation
+      if (!_this.active) {
+        $('.animation-image-loaded').first().addClass('active');
+
+        _this.animate();
+      }
+
+      // set timeout to load next image after x delay
+      window.setTimeout(function() {
+        _this.loadNextImage();
+      }, _this.requestDelay);
+    });
+
+    // set next image index to next image
+    _this.nextImage++;
   },
 
   animate: function() {
