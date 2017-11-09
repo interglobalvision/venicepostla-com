@@ -153,6 +153,12 @@ font-sizes($font-size-basic, $font-size-extra)
 
 @media screen and (min-width: 1024px)
 
+  $gutter = 21px
+
+  grid-maker(680px, $gutter, ml)
+
+@media screen and (min-width: 1120px)
+
   $gutter = 24px
 
   $margin-micro = ($gutter / 3)
