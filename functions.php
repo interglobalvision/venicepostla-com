@@ -15,10 +15,30 @@ function scripts_and_styles_method() {
 
   $is_admin = current_user_can('administrator') ? 1 : 0;
 
+  $animation_options = get_site_option('_igv_animation_options');
+
+  if (!empty($animation_options['animation_images'])) {
+    // If animation values set then get all the image IDs
+    $ids = array_keys($animation_options['animation_images']);
+
+    $images = [];
+
+    // Then save the gallery size image from each ID into an array
+    foreach ($ids as $id) {
+      $imageUrl = wp_get_attachment_image_src($id, 'gallery');
+      $images[] = $imageUrl[0];
+    }
+
+    $animationImages = $images;
+  } else {
+    $animationImages = null;
+  }
+
   $javascriptVars = array(
     'siteUrl' => home_url(),
     'themeUrl' => get_template_directory_uri(),
     'isAdmin' => $is_admin,
+    'animationImages' => $animationImages
   );
 
   wp_enqueue_script('javascript-library', $javascriptLibrary, '', '', true);
