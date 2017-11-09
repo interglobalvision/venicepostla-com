@@ -2,15 +2,13 @@
 get_header();
 ?>
 
-<main id="main-content">
+<main id="main-content" class="grid-row align-items-center justify-center">
 <?php
 if (have_posts()) {
   while (have_posts()) {
     the_post();
 ?>
-  <article>
-    <div id="home-animation" class="grid-row align-content-center justify-center"></div>
-  </article>
+  <div id="home-animation" class="grid-row align-items-center justify-center"></div>
 <?php
   }
 }
