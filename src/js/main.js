@@ -56,8 +56,10 @@ Site.HomeAnimation = {
     _this.images = WP.animationImages;
 
     if (_this.images.length > 0) {
+      // shuffle randomize array of images from enqueue
       Site.shuffleArray(_this.images);
 
+      // trigger request of first images
       _this.requestFirstImages();
     }
   },
@@ -65,18 +67,24 @@ Site.HomeAnimation = {
   requestFirstImages: function() {
     var _this = this;
 
+    // get the first x images in the array
     for (var i = 0; i < _this.numberOfFirstLoadImages; i++) {
+      // append img tag for image
       _this.$animation.append('<img src="' + _this.images[i] + '" id="animation-image-' + i + '" class="animation-image" />');
 
+      // bind to load event of inserted image
       $('#animation-image-' + i).bind('load', function() {
+        // on loaded set loaded class
         $(this).addClass('animation-image-loaded');
 
+        // if animation isn't active trigger animation
         if (!_this.active) {
           $('.animation-image-loaded').first().addClass('active');
 
           _this.animate();
         }
 
+        // set timeout to load next image after x delay
         window.setTimeout(function() {
           _this.loadNextImage();
         }, _this.requestDelay);
@@ -89,17 +97,23 @@ Site.HomeAnimation = {
   loadNextImage: function() {
     var _this = this;
 
+    // if there is an image at the nextImage index
     if (_this.images[_this.nextImage]) {
+      // append img tag for image
       _this.$animation.append('<img src="' + _this.images[_this.nextImage] + '" id="animation-image-' + _this.nextImage + '" class="animation-image" />');
 
+      // bind to load event of inserted image
       $('#animation-image-' + _this.nextImage).bind('load', function() {
+        // on loaded set loaded class
         $(this).addClass('animation-image-loaded');
 
+        // set timeout to load next image after x delay
         window.setTimeout(function() {
           _this.loadNextImage();
         }, _this.requestDelay);
       });
 
+      // set next image index to next image
       _this.nextImage++;
     } else {
       console.log('all loaded');
@@ -109,17 +123,21 @@ Site.HomeAnimation = {
   animate: function() {
     var _this = this;
 
+    // set active state true
     _this.active = true;
 
     _this.animationInterval = setInterval(function() {
       var $active = $('.animation-image-loaded.active');
       var $next = $active.next('.animation-image-loaded');
 
+      // hid current image
       $active.removeClass('active');
 
       if ($next.length) {
+        // if next show it
         $next.addClass('active');
       } else {
+        // otherwise restart loop
         $('.animation-image-loaded').first().addClass('active');
       }
     }, _this.animationSpeed);
