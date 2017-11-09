@@ -9,7 +9,7 @@ if (have_posts()) {
     the_post();
 ?>
   <article>
-    <div id="home-animation"></div>
+    <div id="home-animation" class="grid-row align-content-center justify-center"></div>
   </article>
 <?php
   }
