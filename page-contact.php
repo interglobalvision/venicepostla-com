@@ -17,22 +17,28 @@ if (have_posts()) {
 <?php
   if (!empty($address)) {
 ?>
-    <h2 class="font-uppercase">Address</h2>
-    <?php echo apply_filters('the_content', $address); ?>
+    <div class="contact-section">
+      <h2 class="font-uppercase">Address</h2>
+      <?php echo apply_filters('the_content', $address); ?>
+    </div>
 <?php
   }
 
   if (!empty($phone)) {
 ?>
-    <h2 class="font-uppercase">Telephone</h2>
-    <p><a href="tel:<?php echo preg_replace("/[^0-9]/", "", $phone); ?>"><?php echo $phone; ?></a></p>
+    <div class="contact-section">
+      <h2 class="font-uppercase">Telephone</h2>
+      <p><a href="tel:<?php echo preg_replace("/[^0-9]/", "", $phone); ?>"><?php echo $phone; ?></a></p>
+    </div>
 <?php
   }
 
   if (!empty($email)) {
 ?>
-    <h2 class="font-uppercase">Email</h2>
-    <p><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
+    <div class="contact-section">
+      <h2 class="font-uppercase">Email</h2>
+      <p><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
+    </div>
 <?php
   }
 ?>
