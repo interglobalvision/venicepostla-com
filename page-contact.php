@@ -28,7 +28,7 @@ if (have_posts()) {
 ?>
     <div class="contact-section">
       <h2 class="font-uppercase">Telephone</h2>
-      <p><a href="tel:<?php echo preg_replace("/[^0-9]/", "", $phone); ?>"><?php echo $phone; ?></a></p>
+      <a href="tel:<?php echo preg_replace("/[^0-9]/", "", $phone); ?>"><?php echo $phone; ?></a>
     </div>
 <?php
   }
@@ -37,7 +37,7 @@ if (have_posts()) {
 ?>
     <div class="contact-section">
       <h2 class="font-uppercase">Email</h2>
-      <p><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
+      <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
     </div>
 <?php
   }
