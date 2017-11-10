@@ -6,6 +6,7 @@
 function create_custom_pages() {
 
   $custom_pages = array(
+    'home' => 'Home',
     'about' => 'About',
     'contact' => 'Contact',
   );
@@ -20,6 +21,14 @@ function create_custom_pages() {
         'post_status' => 'publish'
       ));
     }
+  }
+
+  // Set front page
+  $front_page = get_page_by_path('home');
+
+  if (!empty($front_page) ) {
+    update_option( 'page_on_front', $front_page->ID );
+    update_option( 'show_on_front', 'page' );
   }
 }
 add_filter( 'after_setup_theme', 'create_custom_pages' );
