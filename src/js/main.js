@@ -48,7 +48,8 @@ Site.HomeAnimation = {
   numberOfFirstLoadImages: 6,
   requestDelay: 250,
   animationSpeed: 250,
-
+  delay: 3, //images
+  preloadedImages: 0,
   init: function() {
     var _this = this;
 
@@ -93,8 +94,10 @@ Site.HomeAnimation = {
       // on loaded set loaded class
       $(this).addClass('animation-image-loaded');
 
+      _this.preloadedImages++;
+
       // if animation isn't active trigger animation
-      if (!_this.active) {
+      if (!_this.active && _this.preloadedImages >= _this.delay) {
         $('.animation-image-loaded').first().addClass('active');
 
         _this.animate();
