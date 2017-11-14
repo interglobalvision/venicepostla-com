@@ -18,7 +18,19 @@ if (have_posts()) {
 ?>
     <div class="about-list">
       <h2 class="font-uppercase"><?php echo $list['title']; ?></h2>
-      <?php echo apply_filters('the_content', $list['list']); ?>
+      <?php
+        // get list
+        $content = apply_filters('the_content', $list['list']);
+        // remove wordpress' <p> tags
+        $filtered = preg_replace('/<\\/?p(.|\\s)*?>/','', $content);
+        // split each linebreak to array
+        $items = explode('<br />', $filtered);
+
+        // render each line inside a span so each item can be separate in the DOM for sake of css column layout
+        foreach($items as $item) {
+          echo '<span class="about-list-item">' . $item . '</span>';
+        }
+      ?>
     </div>
 <?php
     }

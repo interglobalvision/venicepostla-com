@@ -47,11 +47,13 @@
 
 // ******************************************************
 
-// ABOUT
+// PAGES
 
-.about-list
+.about-list, .contact-section
+  margin-top: $font-leading-basic * 1rem
+
+.about-list-item
   display: block
-  margin-bottom: 1em
 
 // ******************************************************
 
@@ -60,14 +62,14 @@
 #home-animation
   position: fixed
   top: 0
-  left: 0
-  bottom: 0
   right: 0
+  bottom: 0
+  left: 0
 
 .animation-image, .animation-image-loaded
-  display: none
-  max-height: 80vh
   width: auto
+  max-height: 80vh
+  display: none
 
 .animation-image-loaded.active
   display: block
