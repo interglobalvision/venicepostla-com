@@ -17,24 +17,16 @@
   bottom: 0
   padding-bottom: $margin-small
 
-#header-item-left, #header-item-right
-  top: 50vh
-  margin-top: -.5rem
-
 #header-item-left
-  left: 0
-  padding-left: $margin-small
+  top: 50vh
+  left: calc('-50vh + ' + $margin-mid)
+  width: 100vh
+  transform: rotate(90deg)
 
 #header-item-right
-  right: 0
-  padding-right: $margin-small
-
-.header-item-rotate-counter
-  display: block
-  transform: rotate(-90deg)
-
-.header-item-rotate-clockwise
-  display: block
+  top: 50vh
+  right: calc('-50vh + ' + $margin-mid)
+  width: 100vh
   transform: rotate(90deg)
 
 // ******************************************************
