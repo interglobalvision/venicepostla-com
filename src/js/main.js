@@ -139,12 +139,14 @@ Site.HomeAnimation = {
     var _this = this;
     var srcset = '';
     
+    // for each key value pair generate src-set string
     for (var property in image) {
       if (image.hasOwnProperty(property)) {
         srcset += image[property] + ' ' + property + 'w, ';
       }
     }
     
+    // trim last 2 characters which will be a comma and a space
     srcset = srcset.substr(0, srcset.length-2); 
 
     return srcset;    
