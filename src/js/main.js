@@ -95,7 +95,7 @@ Site.HomeAnimation = {
     var srcset = _this.generateSrcset(_this.images[imageIndex]);
 
     // append img tag for image
-    _this.$animation.append('<img src="' + _this.images[imageIndex]['1800'] + '" srcset="' + srcset + '" id="animation-image-' + imageIndex + '" class="animation-image" />');
+    _this.$animation.append('<img src="' + _this.images[imageIndex]['1000'] + '" srcset="' + srcset + '" id="animation-image-' + imageIndex + '" class="animation-image" />');
 
     // bind to load event of inserted image
     $('#animation-image-' + imageIndex).bind('load', function() {
