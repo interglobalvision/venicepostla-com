@@ -20,6 +20,9 @@ Site = {
   onResize: function() {
     var _this = this;
 
+    if ($('.animation-image').length) {
+      _this.HomeAnimation.getAndSetMaxImageSize();
+    }
   },
 
   fixWidows: function() {
@@ -54,6 +57,8 @@ Site.HomeAnimation = {
 
     _this.$animation = $('#home-animation');
     _this.images = WP.animationImages;
+    _this.headerLogoTop = $('#header-item-venice');
+    _this.headerNavLeft = $('#header-item-left');
 
     if (_this.images.length > 0) {
       // shuffle randomize array of images from enqueue
@@ -61,6 +66,9 @@ Site.HomeAnimation = {
 
       // trigger request of first images
       _this.requestFirstImages();
+
+      // get & set image max height & width
+      _this.getAndSetMaxImageSize();
     }
   },
 
@@ -93,6 +101,9 @@ Site.HomeAnimation = {
     $('#animation-image-' + imageIndex).bind('load', function() {
       // on loaded set loaded class
       $(this).addClass('animation-image-loaded');
+
+      // set max image size with cached sizes
+      _this.setMaxImageSize();
 
       // if animation isn't active trigger animation
       if (!_this.active) {
@@ -133,6 +144,34 @@ Site.HomeAnimation = {
       }
     }, _this.animationSpeed);
 
+  },
+
+  getAndSetMaxImageSize: function() {
+    var _this = this;
+
+    // get max height and width for images based on header elems
+
+    // get logo padding-top and convert to integer
+    var padding = parseInt(_this.headerLogoTop.css('padding-top'));
+
+    // offset from viewport, plus dimension, plus padding. x2 for both items
+    var logoHeight = (_this.headerLogoTop.offset().top + _this.headerLogoTop.height() + padding) * 2;
+    var navWidth = (_this.headerNavLeft.offset().left + _this.headerNavLeft.width() + padding) * 2;
+
+    _this.imageMaxHeight = $(window).height() - logoHeight;
+    _this.imageMaxWidth = $(window).width() - navWidth;
+
+    _this.setMaxImageSize();
+  },
+
+  setMaxImageSize: function() {
+    var _this = this;
+
+    // set max height and width for images
+    $('.animation-image').css({
+      'max-height': _this.imageMaxHeight + 'px',
+      'max-width': _this.imageMaxWidth + 'px',
+    });
   },
 
   generateSrcset: function(image) {
