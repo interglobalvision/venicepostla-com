@@ -150,8 +150,8 @@ Site.HomeAnimation = {
 
     // get max height and width for images based on header elems
 
-    // get logo padding-top, remove '.px' from string, and convert to integer
-    var padding = parseInt(_this.headerLogoTop.css('padding-top').replace(/[^-\d\.]/g, ''));
+    // get logo padding-top and convert to integer
+    var padding = parseInt(_this.headerLogoTop.css('padding-top'));
 
     // offset from viewport, plus dimension, plus padding. x2 for both items
     var logoHeight = (_this.headerLogoTop.offset().top + _this.headerLogoTop.height() + padding) * 2;
