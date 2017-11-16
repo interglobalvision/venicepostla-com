@@ -159,7 +159,7 @@ Site.HomeAnimation = {
     var padding = parseInt(_this.headerLogoTop.css('padding-top'));
 
     // offset from viewport, plus dimension, plus padding. x2 for both items
-    var logoHeight = (_this.headerLogoTop.offset().top + _this.headerLogoTop.height() + padding) * 2;
+    var logoHeight = (padding + _this.headerLogoTop.height() + padding) * 2;
     var navWidth = (_this.headerNavLeft.offset().left + _this.headerNavLeft.width() + padding) * 2;
 
     _this.imageMaxHeight = $(window).height() - logoHeight;
