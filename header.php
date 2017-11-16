@@ -30,30 +30,30 @@ get_template_part('partials/seo');
 
   <header id="header">
     <h1 class="u-hidden">Venice Post LA</h1>
-    <span id="header-item-venice" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">VENiCE</a></span>
-    <span id="header-item-post" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">POST</a></span>
-    <span id="header-item-left" class="header-item">
+    <span id="header-item-venice" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>"><?php echo url_get_contents(get_template_directory_uri() . '/dist/img/logo-venice.svg'); ?></a></span>
+    <span id="header-item-post" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>"><?php echo url_get_contents(get_template_directory_uri() . '/dist/img/logo-post.svg'); ?></a></span>
+    <span id="header-item-left" class="header-item text-align-center">
       <?php
         if (!is_front_page()) {
       ?>
-      <a href="<?php echo home_url(); ?>" class="header-item-rotate-counter">HOME</a>
+      <a href="<?php echo home_url(); ?>">HOME</a>
       <?php
         } else {
       ?>
-      <a href="<?php echo home_url('about/'); ?>" class="header-item-rotate-counter">ABOUT</a>
+      <a href="<?php echo home_url('about/'); ?>">ABOUT</a>
       <?php
         }
       ?>
     </span>
-    <span id="header-item-right" class="header-item">
+    <span id="header-item-right" class="header-item text-align-center">
       <?php
         if (is_page('contact')) {
       ?>
-      <a href="<?php echo home_url('about/'); ?>" class="header-item-rotate-clockwise">ABOUT</a>
+      <a href="<?php echo home_url('about/'); ?>">ABOUT</a>
       <?php
         } else {
       ?>
-      <a href="<?php echo home_url('contact/'); ?>" class="header-item-rotate-clockwise">CONTACT</a>
+      <a href="<?php echo home_url('contact/'); ?>">CONTACT</a>
       <?php
         }
       ?>
