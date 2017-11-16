@@ -83,11 +83,11 @@ Site.HomeAnimation = {
   },
 
   addImage: function(imageIndex) {
-    var _this = this;    
+    var _this = this;
     var srcset = _this.generateSrcset(_this.images[imageIndex]);
-    
+
     // append img tag for image
-    _this.$animation.append('<img src="' + _this.images[imageIndex]['600'] + '" src-set="' + srcset + '" id="animation-image-' + imageIndex + '" class="animation-image" />');
+    _this.$animation.append('<img src="' + _this.images[imageIndex]['1800'] + '" srcset="' + srcset + '" id="animation-image-' + imageIndex + '" class="animation-image" />');
 
     // bind to load event of inserted image
     $('#animation-image-' + imageIndex).bind('load', function() {
@@ -134,22 +134,22 @@ Site.HomeAnimation = {
     }, _this.animationSpeed);
 
   },
-  
+
   generateSrcset: function(image) {
     var _this = this;
     var srcset = '';
-    
-    // for each key value pair generate src-set string
+
+    // for each key value pair generate srcset string
     for (var property in image) {
       if (image.hasOwnProperty(property)) {
         srcset += image[property] + ' ' + property + 'w, ';
       }
     }
-    
-    // trim last 2 characters which will be a comma and a space
-    srcset = srcset.substr(0, srcset.length-2); 
 
-    return srcset;    
+    // trim last 2 characters which will be a comma and a space
+    srcset = srcset.substr(0, srcset.length-2);
+
+    return srcset;
   }
 };
 
