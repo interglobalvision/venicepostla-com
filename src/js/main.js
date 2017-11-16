@@ -51,7 +51,8 @@ Site.HomeAnimation = {
   numberOfFirstLoadImages: 6,
   requestDelay: 250,
   animationSpeed: 250,
-
+  minImages: 3,
+  preloadedImages: 0,
   init: function() {
     var _this = this;
 
@@ -102,11 +103,14 @@ Site.HomeAnimation = {
       // on loaded set loaded class
       $(this).addClass('animation-image-loaded');
 
-      // set max image size with cached sizes
       _this.setMaxImageSize();
 
-      // if animation isn't active trigger animation
-      if (!_this.active) {
+      _this.preloadedImages++;
+
+      // if animation isn't active trigger animation and more images and the min are loaded
+      if (!_this.active && _this.preloadedImages >= _this.minImages) {
+
+        // set max image size with cached sizes
         $('.animation-image-loaded').first().addClass('active');
 
         _this.animate();
