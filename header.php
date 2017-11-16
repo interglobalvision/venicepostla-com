@@ -30,8 +30,12 @@ get_template_part('partials/seo');
 
   <header id="header">
     <h1 class="u-hidden">Venice Post LA</h1>
-    <span id="header-item-venice" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>"><?php echo url_get_contents(get_template_directory_uri() . '/dist/img/logo-venice.svg'); ?></a></span>
-    <span id="header-item-post" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>"><?php echo url_get_contents(get_template_directory_uri() . '/dist/img/logo-post.svg'); ?></a></span>
+    <span id="header-item-venice" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">
+      <?php get_template_part('partials/logo-venice'); ?>
+    </a></span>
+    <span id="header-item-post" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">
+      <?php get_template_part('partials/logo-post'); ?>
+    </a></span>
     <span id="header-item-left" class="header-item text-align-center">
       <?php
         if (!is_front_page()) {
