@@ -156,11 +156,14 @@ Site.HomeAnimation = {
     // get max height and width for images based on header elems
 
     // get logo padding-top and convert to integer
-    var padding = parseInt(_this.headerLogoTop.css('padding-top'));
+    var paddingTop = parseInt(_this.headerLogoTop.css('padding-top'));
 
-    // offset from viewport, plus dimension, plus padding. x2 for both items
-    var logoHeight = (_this.headerLogoTop.offset().top + _this.headerLogoTop.height() + padding) * 2;
-    var navWidth = (_this.headerNavLeft.offset().left + _this.headerNavLeft.width() + padding) * 2;
+    // get side padding value from left nav offset
+    var paddingSide = _this.headerNavLeft.offset().left;
+
+    // margin twice plus dimension. x2 for both items
+    var logoHeight = (_this.headerLogoTop.height() + (paddingTop * 2)) * 2;
+    var navWidth = (_this.headerNavLeft.width() + (paddingSide * 2)) * 2;
 
     _this.imageMaxHeight = $(window).height() - logoHeight;
     _this.imageMaxWidth = $(window).width() - navWidth;
