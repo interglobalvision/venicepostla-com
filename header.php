@@ -31,7 +31,9 @@ get_template_part('partials/seo');
   <header id="header">
     <h1 class="u-hidden">Venice Post LA</h1>
     <span id="header-item-venice" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">
-      <?php get_template_part('partials/logo-venice'); ?>
+      <?php
+        // not desired practice but for the sake of a freaky server :/
+        get_template_part('partials/logo-venice'); ?>
     </a></span>
     <span id="header-item-post" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">
       <?php get_template_part('partials/logo-post'); ?>
