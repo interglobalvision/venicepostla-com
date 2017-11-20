@@ -105,6 +105,12 @@ function igv_cmb_metaboxes() {
   		'type' => 'text_email',
   	) );
 
+    $contact_metabox->add_field( array(
+  		'name' => esc_html__( 'Instagram', 'cmb2' ),
+  		'description' => esc_html__( 'Just the username not the full URL', 'cmb2' ),
+  		'id'   => $prefix . 'contact_insta',
+  		'type' => 'text_medium',
+  	) );
   }
 
 }
