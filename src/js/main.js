@@ -47,6 +47,7 @@ Site = {
 
 Site.HomeAnimation = {
   active: false,
+  paused: false,
   nextImage: 0,
   numberOfFirstLoadImages: 6,
   requestDelay: 250,
@@ -70,7 +71,27 @@ Site.HomeAnimation = {
 
       // get & set image max height & width
       _this.getAndSetMaxImageSize();
+
     }
+  },
+
+  bindPauses: function() {
+    var _this = this;
+
+    $('.animation-image').off().on({
+      'mouseover': function() {
+        _this.paused = true;
+      },
+      'mouseout': function() {
+        _this.paused = false;
+      },
+      'touchstart': function() {
+        _this.paused = true;
+      },
+      'touchend': function() {
+        _this.paused = false;
+      }
+    });
   },
 
   requestFirstImages: function() {
@@ -105,6 +126,8 @@ Site.HomeAnimation = {
 
       _this.setMaxImageSize();
 
+      _this.bindPauses();
+
       _this.preloadedImages++;
 
       // if animation isn't active trigger animation and more images and the min are loaded
@@ -112,6 +135,8 @@ Site.HomeAnimation = {
 
         // set max image size with cached sizes
         $('.animation-image-loaded').first().addClass('active');
+
+        _this.bindPauses();
 
         _this.animate();
       }
@@ -133,18 +158,21 @@ Site.HomeAnimation = {
     _this.active = true;
 
     _this.animationInterval = setInterval(function() {
-      var $active = $('.animation-image-loaded.active');
-      var $next = $active.next('.animation-image-loaded');
+      if (!_this.paused) {
+        var $active = $('.animation-image-loaded.active');
+        var index = $active.index('.animation-image-loaded')
+        var $next = $('.animation-image-loaded').eq(index + 1);
 
-      // hid current image
-      $active.removeClass('active');
+        // hid current image
+        $active.removeClass('active');
 
-      if ($next.length) {
-        // if next show it
-        $next.addClass('active');
-      } else {
-        // otherwise restart loop
-        $('.animation-image-loaded').first().addClass('active');
+        if ($next.length) {
+          // if next show it
+          $next.addClass('active');
+        } else {
+          // otherwise restart loop
+          $('.animation-image-loaded').first().addClass('active');
+        }
       }
     }, _this.animationSpeed);
 

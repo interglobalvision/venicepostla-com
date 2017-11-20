@@ -11,6 +11,7 @@ if (have_posts()) {
     $address = get_post_meta($post->ID, '_igv_contact_address', true);
     $phone = get_post_meta($post->ID, '_igv_contact_phone', true);
     $email = get_post_meta($post->ID, '_igv_contact_email', true);
+    $insta = get_post_meta($post->ID, '_igv_contact_insta', true);
 ?>
   <article <?php post_class('grid-item item-s-12 item-m-3'); ?> id="post-<?php the_ID(); ?>">
     <div class="font-uppercase"><?php the_content(); ?></div>
@@ -38,6 +39,15 @@ if (have_posts()) {
     <div class="contact-section">
       <h2 class="font-uppercase">Email</h2>
       <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+    </div>
+<?php
+  }
+
+  if (!empty($insta)) {
+?>
+    <div class="contact-section">
+      <h2 class="font-uppercase">Instagram</h2>
+      <a href="https://www.instagram.com/<?php echo $insta; ?>">@<?php echo $insta; ?></a>
     </div>
 <?php
   }
