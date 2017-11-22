@@ -17,17 +17,25 @@
   bottom: 0
   padding-bottom: $margin-small
 
+#header-item-left,
+#header-item-right
+  top: 0
+  height: 100vh
+  width: 1em
+  a
+    flex: 0 1 auto
+    display: block
+    padding-left: 1em
+
 #header-item-left
-  top: 50vh
-  left: calc('-50vh + ' + $margin-mid)
-  width: 100vh
-  transform: rotate(-90deg)
+  left: $margin-basic
+  a
+    transform: rotate(-90deg)
 
 #header-item-right
-  top: 50vh
-  right: calc('-50vh + ' + $margin-mid)
-  width: 100vh
-  transform: rotate(90deg)
+  right: $margin-basic
+  a
+    transform: rotate(90deg)
 
 .logo
   height: .73em

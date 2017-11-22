@@ -38,7 +38,7 @@ get_template_part('partials/seo');
     <span id="header-item-post" class="header-item font-size-extra"><a href="<?php echo home_url(); ?>">
       <?php get_template_part('partials/logo-post'); ?>
     </a></span>
-    <span id="header-item-left" class="header-item text-align-center font-spaced-more">
+    <span id="header-item-left" class="header-item font-spaced-more grid-row align-items-center justify-center">
       <?php
         if (!is_front_page()) {
       ?>
@@ -51,7 +51,7 @@ get_template_part('partials/seo');
         }
       ?>
     </span>
-    <span id="header-item-right" class="header-item text-align-center font-spaced-more">
+    <span id="header-item-right" class="header-item font-spaced-more grid-row align-items-center justify-center">
       <?php
         if (is_page('contact')) {
       ?>
