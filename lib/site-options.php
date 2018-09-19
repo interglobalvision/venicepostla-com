@@ -4,6 +4,8 @@ add_action( 'cmb2_admin_init', 'igv_register_theme_options_metabox' );
 function igv_register_theme_options_metabox() {
   $prefix = '_igv_';
 
+  // Options for animation
+
   $animation_options = new_cmb2_box( array(
     'id'           => $prefix . 'animation_options_page',
     'title'        => esc_html__( 'Animation Options', 'cmb2' ),
@@ -36,6 +38,57 @@ function igv_register_theme_options_metabox() {
     'type'    => 'file_list',
     'preview_size' => array( 100, 100 ),
     'query_args' => array( 'type' => 'image' ),
+  ) );
+
+  // Options for audio player
+
+  $audio_options = new_cmb2_box( array(
+    'id'           => $prefix . 'audio_options_page',
+    'title'        => esc_html__( 'Audio Options', 'cmb2' ),
+    'object_types' => array( 'options-page' ),
+    /*
+     * The following parameters are specific to the options-page box
+     * Several of these parameters are passed along to add_menu_page()/add_submenu_page().
+     */
+    'option_key'      => $prefix . 'audio_options', // The option key and admin menu page slug.
+    'icon_url'        => 'dashicons-media-audio', // Menu icon. Only applicable if 'parent_slug' is left empty.
+    // 'menu_title'      => esc_html__( 'Options', 'cmb2' ), // Falls back to 'title' (above).
+    // 'parent_slug'     => 'themes.php', // Make options page a submenu item of the themes menu.
+    'capability'      => 'manage_options', // Cap required to view options-page.
+    // 'position'        => 1, // Menu position. Only applicable if 'parent_slug' is left empty.
+    // 'admin_menu_hook' => 'network_admin_menu', // 'network_admin_menu' to add network-level options page.
+    // 'display_cb'      => false, // Override the options-page form output (CMB2_Hookup::options_page_output()).
+    'save_button'     => esc_html__( 'Save', 'cmb2' ), // The text for the options-page save button. Defaults to 'Save'.
+  ) );
+
+  $audio_options->add_field( array(
+    'name'    => esc_html__( 'Audio Options', 'cmb2' ),
+    'id'      => 'title',
+    'type'    => 'title',
+  ) );
+
+  $audio_options->add_field( array(
+    'name'    => esc_html__( 'Audio file', 'cmb2' ),
+    'desc'    => esc_html__( 'Upload here the audio file to be played. This file needs to be an mp3 and should have a maximum bitrate of 128kbps.', 'cmb2' ),
+    'id'      => 'audio_file',
+    'type'    => 'file',
+    'options' => array(
+		  'url' => false, // Hide the text input for the url
+    ),
+    // query_args are passed to wp.media's library query.
+    'query_args' => array(
+		  'type' => array(
+  		  'audio/mpeg',
+  		  'audio/mp3'
+		  ),
+    ),
+  ) );
+
+  $audio_options->add_field( array(
+    'name'    => esc_html__( 'Loop', 'cmb2' ),
+    'desc'    => esc_html__( 'Should the audio file repeat playing once it finishes?', 'cmb2' ),
+    'id'      => 'audio_loop_boolean',
+    'type'    => 'checkbox',
   ) );
 
   // Site options for general data
