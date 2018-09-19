@@ -1,5 +1,5 @@
 /* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, jQuery, document, Site, WP */
+/* global $, jQuery, document, Site, WP, Howl */
 
 Site = {
   mobileThreshold: 601,
@@ -15,6 +15,10 @@ Site = {
     });
 
     _this.HomeAnimation.init();
+
+    if (WP.audio !== null) {
+      _this.Audio.init();
+    }
   },
 
   onResize: function() {
@@ -224,6 +228,31 @@ Site.HomeAnimation = {
     srcset = srcset.substr(0, srcset.length-2);
 
     return srcset;
+  }
+};
+
+Site.Audio = {
+  isLooped: false,
+
+  init: function() {
+    var _this = this;
+
+    if (WP.audio.audio_loop_boolean === 'on') {
+      _this.isLooped = true;
+    }
+
+    _this.createPlayer();
+  },
+
+  createPlayer: function() {
+    var _this = this;
+
+    _this.player = new Howl({
+      src: [WP.audio.audio_file],
+      autoplay: true,
+      loop: _this.isLooped,
+      volume: 0.9
+    });
   }
 };
 
