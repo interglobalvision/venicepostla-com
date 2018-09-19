@@ -233,12 +233,17 @@ Site.HomeAnimation = {
 
 Site.Audio = {
   isLooped: false,
+  isAutoplay: false,
 
   init: function() {
     var _this = this;
 
     if (WP.audio.audio_loop_boolean === 'on') {
       _this.isLooped = true;
+    }
+
+    if (WP.audio.audio_autoplay_boolean === 'on') {
+      _this.isAutoplay = true;
     }
 
     _this.createPlayer();
@@ -249,7 +254,7 @@ Site.Audio = {
 
     _this.player = new Howl({
       src: [WP.audio.audio_file],
-      autoplay: true,
+      autoplay: _this.isAutoplay,
       loop: _this.isLooped,
       volume: 0.9
     });

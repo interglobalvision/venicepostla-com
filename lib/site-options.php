@@ -91,6 +91,13 @@ function igv_register_theme_options_metabox() {
     'type'    => 'checkbox',
   ) );
 
+  $audio_options->add_field( array(
+    'name'    => esc_html__( 'Autoplay', 'cmb2' ),
+    'desc'    => esc_html__( 'Should the audio file automatically play?', 'cmb2' ),
+    'id'      => 'audio_autoplay_boolean',
+    'type'    => 'checkbox',
+  ) );
+
   // Site options for general data
 
   $site_options = new_cmb2_box( array(
