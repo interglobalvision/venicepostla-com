@@ -35,3 +35,14 @@ function get_animation_images() {
   //pr($images); die;
   return $images;
 }
+
+function get_audio_variables() {
+  $audio_options = get_site_option('_igv_audio_options');
+
+  // If the file is empty then nothing to return
+  if (empty($audio_options['audio_file'])) {
+    return null;
+  }
+
+  return $audio_options;
+}

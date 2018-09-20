@@ -16,12 +16,14 @@ function scripts_and_styles_method() {
   $is_admin = current_user_can('administrator') ? 1 : 0;
 
   $animationImages = get_animation_images();
+  $audioVariables = get_audio_variables();
 
   $javascriptVars = array(
     'siteUrl' => home_url(),
     'themeUrl' => get_template_directory_uri(),
     'isAdmin' => $is_admin,
-    'animationImages' => $animationImages
+    'animationImages' => $animationImages,
+    'audio' => $audioVariables
   );
 
   wp_enqueue_script('javascript-library', $javascriptLibrary, '', '', true);

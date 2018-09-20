@@ -1,7 +1,8 @@
 /* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, jQuery, document, Site, WP */
+/* global $, jQuery, document, Site, Ajaxy, WP, Howl */
 
 Site = {
+  animationSpeed: 50,
   mobileThreshold: 601,
   init: function() {
     var _this = this;
@@ -15,6 +16,18 @@ Site = {
     });
 
     _this.HomeAnimation.init();
+
+    if (WP.audio !== null) {
+      _this.Audio.init();
+    }
+  },
+
+  beforeAjax: function() {
+    this.HomeAnimation.clearAnimation();
+  },
+
+  afterAjax: function() {
+    this.HomeAnimation.init();
   },
 
   onResize: function() {
@@ -178,6 +191,18 @@ Site.HomeAnimation = {
 
   },
 
+  clearAnimation: function() {
+    var _this = this;
+
+    _this.active = false;
+    _this.paused = false;
+    _this.nextImage =  0;
+
+    if (_this.animationInterval) {
+      window.clearInterval(_this.animationInterval);
+    }
+  },
+
   getAndSetMaxImageSize: function() {
     var _this = this;
 
@@ -210,7 +235,6 @@ Site.HomeAnimation = {
   },
 
   generateSrcset: function(image) {
-    var _this = this;
     var srcset = '';
 
     // for each key value pair generate srcset string
@@ -227,4 +251,144 @@ Site.HomeAnimation = {
   }
 };
 
+Site.Audio = {
+  isLooped: false,
+  isAutoplay: false,
+
+  isPlaying: false,
+
+  init: function() {
+    var _this = this;
+
+    if (WP.audio.audio_loop_boolean === 'on') {
+      _this.isLooped = true;
+    }
+
+    if (WP.audio.audio_autoplay_boolean === 'on') {
+      _this.isAutoplay = true;
+    }
+
+    _this.createPlayer();
+  },
+
+  createPlayer: function() {
+    var _this = this;
+
+    _this.player = new Howl({
+      src: [WP.audio.audio_file],
+      autoplay: _this.isAutoplay,
+      loop: _this.isLooped,
+      volume: 0.9,
+      onload: function() {
+        _this.isInitialized = true;
+      },
+      onplay: function() {
+        _this.isPlaying = true;
+      },
+      onpause: function() {
+        _this.isPlaying = false;
+      }
+    });
+  }
+};
+
 Site.init();
+
+Ajaxy = {
+  ajaxyLinks: 'a',
+
+  init: function() {
+    var _this = this;
+
+    _this.bind();
+
+    // For back button
+    window.onpopstate = function() {
+      _this.ajaxLoad(document.location.origin + document.location.pathname);
+    };
+  },
+
+  bind: function() {
+    var _this = this;
+
+    // Find all ajaxy links and bind ajax event
+    $(_this.ajaxyLinks).click(function(event) {
+      event.preventDefault();
+
+      var url = event.currentTarget.href;
+
+      $('#main-content').addClass('main-content-hidden');
+      $('html, body').animate({scrollTop: 0,}, Site.animationSpeed);
+
+      _this.ajaxLoad(url);
+    });
+
+  },
+
+  ajaxLoad: function(url) {
+    var _this = this;
+
+    $.ajax(url, {
+      beforeSend: function() {
+        _this.ajaxBefore();
+      },
+
+      dataType: 'html',
+      error: function(jqXHR, textStatus) {
+        _this.ajaxErrorHandler(jqXHR, textStatus);
+      },
+
+      success: function(data) {
+        _this.ajaxSuccess(data, url);
+        $('#main-content').removeClass('main-content-hidden');
+      },
+    });
+  },
+
+  ajaxErrorHandler: function(jqXHR, textStatus) {
+    alert(textStatus);
+    console.log(jqXHR);
+  },
+
+  ajaxBefore: function() {
+    $('#main-content').html('');
+    Site.beforeAjax();
+  },
+
+  ajaxSuccess: function(data, url) {
+    var _this = this;
+
+    // Convert data into proper html to be able to fully parse thru jQuery
+    _this.responseHtml = document.createElement('html');
+    _this.responseHtml.innerHTML = data;
+
+    // Unbind events
+    $(window).off('resize');
+    $(window).off('scroll');
+    $(document).off('keydown');
+
+    // Get changes: body classes, page title, main content, main content classes, header
+    var bodyClasses = $('body', _this.responseHtml).attr('class');
+    var title = $('title', _this.responseHtml).text();
+    var $content = $('#main-content', _this.responseHtml);
+    var contentClasses = $('#main-content', _this.responseHtml).attr('class');
+    var $header = $('#header', _this.responseHtml);
+
+    // Push new history state and update title
+    history.pushState(null, title, url);
+    document.title = title;
+
+    // Update with new content and classes
+    $('body').removeAttr('class').addClass(bodyClasses);
+    $('#main-content').html($content.html()).removeAttr('class').addClass(contentClasses);
+    $('#header').html($header.html());
+
+    // After ajax site re-init
+    Site.afterAjax();
+
+    // Rebind after ajax for new <a> tags
+    _this.bind();
+  },
+};
+
+Ajaxy.init();
