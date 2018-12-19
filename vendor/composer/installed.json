@@ -1,26 +1,26 @@
 [
     {
         "name": "fightbulc/moment",
-        "version": "1.26.10",
-        "version_normalized": "1.26.10.0",
+        "version": "1.28.3",
+        "version_normalized": "1.28.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fightbulc/moment.php.git",
-            "reference": "2fe6607fdbbd45b48708f539c70fde89ca9d10e6"
+            "reference": "3ca8e74dffb683b7c89c609bf9d1cae497818689"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fightbulc/moment.php/zipball/2fe6607fdbbd45b48708f539c70fde89ca9d10e6",
-            "reference": "2fe6607fdbbd45b48708f539c70fde89ca9d10e6",
+            "url": "https://api.github.com/repos/fightbulc/moment.php/zipball/3ca8e74dffb683b7c89c609bf9d1cae497818689",
+            "reference": "3ca8e74dffb683b7c89c609bf9d1cae497818689",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "4.2.*"
+            "phpunit/phpunit": "^4.8.36 || ^5.5 || ^6.5 || ^7.5"
         },
-        "time": "2017-08-14T05:06:04+00:00",
+        "time": "2018-12-15T19:07:09+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -33,16 +33,6 @@
             "MIT"
         ],
         "authors": [
-            {
-                "name": "Ashish Tilara",
-                "email": "ashish@itcutives.com",
-                "role": "developer"
-            },
-            {
-                "name": "Jaroslaw Kozak",
-                "email": "jaroslaw.kozak68@gmail.com",
-                "role": "developer"
-            },
             {
                 "name": "Tino Ehrich",
                 "email": "tino@bigpun.me",
@@ -66,17 +56,17 @@
     },
     {
         "name": "webdevstudios/cmb2",
-        "version": "v2.4.2",
-        "version_normalized": "2.4.2.0",
+        "version": "v2.5.1",
+        "version_normalized": "2.5.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/CMB2/CMB2.git",
-            "reference": "fdcb80985e4b4a4c7118b2ecce090af4a3309958"
+            "reference": "1129acf4b7689010789d830f6fba0b7b68ad51ff"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/CMB2/CMB2/zipball/fdcb80985e4b4a4c7118b2ecce090af4a3309958",
-            "reference": "fdcb80985e4b4a4c7118b2ecce090af4a3309958",
+            "url": "https://api.github.com/repos/CMB2/CMB2/zipball/1129acf4b7689010789d830f6fba0b7b68ad51ff",
+            "reference": "1129acf4b7689010789d830f6fba0b7b68ad51ff",
             "shasum": ""
         },
         "require": {
@@ -88,7 +78,7 @@
         "suggest": {
             "composer/installers": "~1.0"
         },
-        "time": "2018-05-29T14:23:29+00:00",
+        "time": "2018-12-10T15:11:54+00:00",
         "type": "wordpress-plugin",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
@@ -107,12 +97,6 @@
                 "email": "justin@dsgnwrks.pro",
                 "homepage": "https://dsgnwrks.pro",
                 "role": "Developer"
-            },
-            {
-                "name": "Zao",
-                "email": "office@zao.com",
-                "homepage": "http://zao.is",
-                "role": "Developer"
             }
         ],
         "description": "CMB2 is a metabox, custom fields, and forms library for WordPress that will blow your mind.",
@@ -121,7 +105,8 @@
             "metabox",
             "plugin",
             "wordpress"
-        ]
+        ],
+        "abandoned": "cmb2/cmb2"
     },
     {
         "name": "webdevstudios/cmb2-post-search-field",
