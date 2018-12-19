@@ -7,6 +7,6 @@
     }
   ],
   "require": {
-    "webdevstudios/cmb2": "^2.4.2"
+    "webdevstudios/cmb2": "^2.5.1"
   }
 }
