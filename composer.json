@@ -7,7 +7,6 @@
     }
   ],
   "require": {
-    "webdevstudios/cmb2": "^2.4.2",
-    "fightbulc/moment": "*"
+    "webdevstudios/cmb2": "^2.4.2"
   }
 }
