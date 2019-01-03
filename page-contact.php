@@ -38,7 +38,7 @@ if (have_posts()) {
 ?>
     <div class="contact-section">
       <h2 class="font-uppercase">Email</h2>
-      <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+      <a href="mailto:<?php echo $email; ?>" class="no-ajax"><?php echo $email; ?></a>
     </div>
 <?php
   }
@@ -47,7 +47,7 @@ if (have_posts()) {
 ?>
     <div class="contact-section">
       <h2 class="font-uppercase">Instagram</h2>
-      <a href="https://www.instagram.com/<?php echo $insta; ?>">@<?php echo $insta; ?></a>
+      <a href="https://www.instagram.com/<?php echo $insta; ?>" class="no-ajax" target="_blank" rel="noopener">@<?php echo $insta; ?></a>
     </div>
 <?php
   }

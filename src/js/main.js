@@ -173,7 +173,7 @@ Site.HomeAnimation = {
     _this.animationInterval = setInterval(function() {
       if (!_this.paused) {
         var $active = $('.animation-image-loaded.active');
-        var index = $active.index('.animation-image-loaded')
+        var index = $active.index('.animation-image-loaded');
         var $next = $('.animation-image-loaded').eq(index + 1);
 
         // hid current image
@@ -295,7 +295,7 @@ Site.Audio = {
 Site.init();
 
 Ajaxy = {
-  ajaxyLinks: 'a',
+  ajaxyLinks: 'a:not(.no-ajax)',
 
   init: function() {
     var _this = this;
